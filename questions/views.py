@@ -10,9 +10,8 @@ def test(request):
 
 def test_passing(request, id, page):
     test_questions = Question.objects.filter(test_set_id=id)
-    
-
     paginator = Paginator(test_questions, 1)
+    
     try:
         test_questions = paginator.page(page)
         test = Question.objects.get(pk=test_questions.object_list)
@@ -37,4 +36,3 @@ def home(request):
     }
 
     return render(request, 'questions/index.html', context)
-    
