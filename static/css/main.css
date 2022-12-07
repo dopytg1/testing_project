@@ -19,3 +19,7 @@
 .result_text {
     font-size: 25px;
 }
+.login-main {
+    margin: 0 auto;
+    /* text-align: center; */
+}

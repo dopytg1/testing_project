@@ -1,13 +1,12 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage
+from django.contrib.auth.decorators import login_required
 
 from .models import TestSet, Question, Answer
 
 
-def test(request):
-    return render(request, "base.html", {})
 
-
+@login_required(login_url='/login')
 def test_passing(request, id, page):
     test_questions = Question.objects.filter(test_set_id=id)
     paginator = Paginator(test_questions, 1)
@@ -27,6 +26,8 @@ def test_passing(request, id, page):
 
     return render(request, 'questions/test_passing.html', context)
 
+
+@login_required(login_url='/login')
 def results(request, correct, incorrect):
     
     total = correct + incorrect
@@ -40,6 +41,7 @@ def results(request, correct, incorrect):
     return render(request, "questions/results.html", context)
 
 
+@login_required(login_url='/login')
 def home(request):
     tests = TestSet.objects.all()
 
