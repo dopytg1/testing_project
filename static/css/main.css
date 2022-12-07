@@ -1,0 +1,18 @@
+.main_page_tests {
+    text-align: center;
+    margin-left: 5% !important;
+    width: 45% !important;
+}
+
+.test_main {
+    text-align: center;
+    margin: 0 auto;
+}
+.checkbox-container {
+    width: 10%;
+    margin: 0 auto;
+    font-size: 25px;
+}
+.test_check_btn {
+    margin-top: 40px;
+}

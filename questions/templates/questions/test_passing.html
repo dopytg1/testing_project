@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Test{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <h3>Вопрос {{ questions.start_index }} из {{ questions.paginator.count }}</h3>
+    <div class="test_main alert alert-warning mt-5 user-from-list fs-5 text-muted">
+
+        
+        {% for question in questions %}
+            <h3>{{ question.text }}</h3>
+            
+            {% for answer in answers %}
+            <div class="form-check ">
+                <div class="checkbox-container">
+                    <input class="form-check-input" type="checkbox" value="{{ answer.is_correct }}" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        {{ answer.answer_text }}
+                    </label>
+                </div>
+            </div>
+            {% endfor %}
+            
+        {% endfor %}
+    
+        {% if questions.has_next %}
+            <a href="{% url 'test_passing' id=id page=questions.next_page_number %}" class="btn btn-primary test_check_btn">Next </a>
+        {% else %}
+            <a href="#" class="btn btn-primary test_check_btn">Submit </a>
+        {% endif %}
+    </div>
+
+</div>
+
+{% endblock %}

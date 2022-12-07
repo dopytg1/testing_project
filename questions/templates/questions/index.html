@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Main page{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <h1 style="text-align: center; margin:30px 0;">Choose from the tests below: </h1>
+        <div class="row row-cols-1 row-cols-md-2  row-cols-lg-2 row-cols-xl-2 g-4 main_tests_container">
+            {% for test in tests %}
+                <div class="alert alert-warning mt-5 user-from-list fs-5 text-muted main_page_tests">
+
+                    <p>Title: {{ test.title }}</p>
+                    <p>Category: {{ test.category_id.category_name }}</p>
+                    <p>{{ test.description }}</p>
+                    <a href="{% url 'test_passing' id=test.id page=1 %}" class="btn btn-primary">pass the test</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
