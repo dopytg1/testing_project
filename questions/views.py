@@ -11,7 +11,7 @@ def test(request):
 def test_passing(request, id, page):
     test_questions = Question.objects.filter(test_set_id=id)
     paginator = Paginator(test_questions, 1)
-    
+
     try:
         test_questions = paginator.page(page)
         test = Question.objects.get(pk=test_questions.object_list)
@@ -26,6 +26,18 @@ def test_passing(request, id, page):
     }
 
     return render(request, 'questions/test_passing.html', context)
+
+def results(request, correct, incorrect):
+    
+    total = correct + incorrect
+    correctPercent = (correct / total) * 100
+
+    context = {
+        'correct': correct,
+        'incorrect': incorrect,
+        'correctPercent': correctPercent
+    }
+    return render(request, "questions/results.html", context)
 
 
 def home(request):

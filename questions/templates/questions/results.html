@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Results{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <div class="main_results">
+        <h1>Поздравляю с пройденным тестом!</h1>
+        <h1>Ваши результаты: </h1>
+
+        <div class="test_main alert alert-warning mt-5 user-from-list fs-5 ">
+            <p class="result_text">Правильные ответы: {{ correct }}</p>
+            <p class="result_text">Неправильные ответы: {{ incorrect }}</p>
+            <p class="result_text">Процент правильных ответов: {{ correctPercent }}%</p>
+        </div>
+
+        <a class="nav-link active" aria-current="page" href="{% url 'home' %}">далее</a> 
+        
+    </div>
+</div>
+{% endblock %}

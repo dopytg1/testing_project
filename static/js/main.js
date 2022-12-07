@@ -39,6 +39,10 @@ nextBtn.addEventListener("click", function() {
     }
 
     if (nextBtn.textContent == "Submit") {
-        window.location.replace("http://localhost:8000/")
+        let correctAnswers = localStorage.getItem('correct')
+        let incorrectAnswers = localStorage.getItem('incorrect')
+        
+
+        window.location.replace("http://localhost:8000/results/" + String(correctAnswers) + "/" + String(incorrectAnswers))
     }
 })
